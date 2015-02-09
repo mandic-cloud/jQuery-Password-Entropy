@@ -115,9 +115,9 @@
                 var entropy = log2(combinations);
 
                 // Run functions to modify password entropy
-                for (var i in settings.functions) {
-                    entropy = settings.functions[i](entropy, psw);
-                }
+                $.each(settings.functions, function(index, func){
+                    entropy = func(entropy, psw);
+                });
                 
                 // Set message display
                 var res = 0;
